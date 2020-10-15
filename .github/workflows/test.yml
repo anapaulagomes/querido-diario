@@ -14,9 +14,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Run Spider
         run: |
-          directory = "spiders"
           for changed_file in ${{ steps.abc.outputs.added_modified }}; do
-            test "${string#*$directory}" != "$string" && echo "$directory found in $changed_file"
+            test "${string#*spiders}" != "$string" && echo "To be run: $changed_file"
 
             if [ changed_file == *"spiders"* ]; then
               echo "Do something with this ${changed_file}."

@@ -7,6 +7,9 @@ from gazette.items import Gazette
 from gazette.spiders.base import BaseGazetteSpider
 
 
+print("Testando a mudança de um spider")
+
+
 class BaFeiraDeSantanaSpider(BaseGazetteSpider):
     TERRITORY_ID = "2910800"
     name = "ba_feira_de_santana"

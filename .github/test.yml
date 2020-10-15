@@ -1,0 +1,22 @@
+name: Test
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.1.0
+      - uses: jitterbit/get-changed-files@v1
+        id: abc
+        with:
+          format: space-delimited
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run Spider
+        run: |
+          for changed_file in ${{ steps.abc.outputs.added_modified }}; do
+            if [ changed_file == *"/spiders/"* ]; then
+              echo "Do something with this ${changed_file}."
+            fi
+          done
+  
